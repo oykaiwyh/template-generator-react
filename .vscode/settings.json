@@ -1,0 +1,68 @@
+{
+  // 编辑器尺寸
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+    // "source.fixAll.stylelint": true
+  },
+  // 开启prettier
+  "prettier.enable": true,
+  // 自动格式化文件
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "eslint.validate": [
+    "tsx",
+    "jsx",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "vue-html",
+    "vue",
+    "html"
+  ],
+  "eslint.options": {
+    "extensions": [".tsx", ".vue", ".jsx", ".ts"]
+    // "configFile": ".eslintrc.js"
+    // "overrideConfigFile": ".eslintrc.js"
+  },
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "tsx"
+  ],
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "files.associations": {
+    "*.tsx": "typescriptreact"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
