@@ -1,21 +1,22 @@
+/* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-const PageA = lazy(() => import('@/pages/pageA'));
-const PageB = lazy(() => import('@/pages/pageB'));
+const Home = lazy(() => import('@/pages/Home'));
+const Editor = lazy(() => import('@/pages/Editor'));
 
 export const routers = createBrowserRouter([
   {
     path: '/',
-    element: <PageA />,
+    element: <Home />,
   },
   {
-    path: '/a',
-    element: <PageA />,
+    path: '/Home',
+    element: <Home />,
   },
   {
-    path: '/b',
-    element: <PageB />,
+    path: '/Editor',
+    element: <Editor />,
   },
 ]);
 
