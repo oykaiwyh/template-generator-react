@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import testImg from '@/assets/images/Home/test.png';
 import { Button, Card, Row, Col } from 'antd';
+import { Link } from 'react-router-dom';
 import styles from './index.module.scss';
 
 const { Meta } = Card;
@@ -44,9 +45,11 @@ const ListInfo = () => {
                   />
                   {hover !== null && index === hover ? (
                     <div className={styles.mantle}>
-                      <Button type="primary" shape="round">
-                        使用该模版创建
-                      </Button>
+                      <Link to={`/template/${index}`}>
+                        <Button type="primary" shape="round">
+                          使用该模版创建
+                        </Button>
+                      </Link>
                     </div>
                   ) : null}
                 </div>
