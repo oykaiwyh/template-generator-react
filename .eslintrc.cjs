@@ -53,12 +53,13 @@ module.exports = {
       },
     ],
     'object-curly-newline': 'off',
+    'implicit-arrow-linebreak': 'off',
   },
   settings: {
     'import/resolver': {
       alias: {
         map: [['@', './src']],
-        extensions: ['.js', '.jsx', '.tsx'],
+        extensions: ['.js', '.jsx', '.tsx', '.ts'],
       },
     },
   },
