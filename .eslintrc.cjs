@@ -54,6 +54,12 @@ module.exports = {
     ],
     'object-curly-newline': 'off',
     'implicit-arrow-linebreak': 'off',
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+      },
+    ],
   },
   settings: {
     'import/resolver': {

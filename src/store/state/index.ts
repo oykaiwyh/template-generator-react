@@ -18,36 +18,38 @@ export interface IGlobalDataProps {
   templates: ITemplateProps[];
 }
 
-const initTemplatesState: ITemplateProps[] = [
-  {
-    id: 1,
-    title: '这是测试模版海报信息',
-    coverImg: testImg,
-    author: 'XXX',
-    copiedCount: 1,
-  },
-  {
-    id: 2,
-    title: '这是测试模版海报信息',
-    coverImg: testImg,
-    copiedCount: 1,
-    author: 'XXX',
-  },
-  {
-    id: 3,
-    title: '这是测试模版海报信息',
-    coverImg: testImg,
-    copiedCount: 1,
-    author: 'XXX',
-  },
-  {
-    id: 4,
-    title: '这是测试模版海报信息',
-    coverImg: testImg,
-    copiedCount: 1,
-    author: 'XXX',
-  },
-];
+const initTemplatesState = {
+  template: [
+    {
+      id: 1,
+      title: '这是测试模版海报信息',
+      coverImg: testImg,
+      author: 'XXX',
+      copiedCount: 1,
+    },
+    {
+      id: 2,
+      title: '这是测试模版海报信息',
+      coverImg: testImg,
+      copiedCount: 1,
+      author: 'XXX',
+    },
+    {
+      id: 3,
+      title: '这是测试模版海报信息',
+      coverImg: testImg,
+      copiedCount: 1,
+      author: 'XXX',
+    },
+    {
+      id: 4,
+      title: '这是测试模版海报信息',
+      coverImg: testImg,
+      copiedCount: 1,
+      author: 'XXX',
+    },
+  ],
+};
 
 const initUserState: IUserProps = {
   isLogin: false,

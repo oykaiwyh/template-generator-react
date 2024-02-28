@@ -1,17 +1,30 @@
 import { create } from 'zustand';
-import { initUserState } from '../state';
-import { userReducer } from '../reducer';
-import type { userAction } from '../action';
+import { initTemplatesState, initUserState } from '../state';
+import { templateReducer, userReducer } from '../reducer';
+import type { templateAction, userAction } from '../action';
 
-interface fi {
-  // eslint-disable-next-line no-unused-vars
-  useDispatch: (action: userAction) => void;
+interface IUserPatch {
+  useDispatch: (_action: userAction) => void;
 }
 
-export const useUserStore = create<typeof initUserState & fi>((set) => ({
-  ...initUserState,
-  useDispatch: (action: userAction) =>
-    set((state) => userReducer(state, action)),
+interface ITemplatePatch {
+  useDispatch: (_action: templateAction) => void;
+}
+
+export const useUserStore = create<typeof initUserState & IUserPatch>(
+  (set) => ({
+    ...initUserState,
+    useDispatch: (action: userAction) =>
+      set((state) => userReducer(state, action)),
+  }),
+);
+
+export const useTemplateStore = create<
+  typeof initTemplatesState & ITemplatePatch
+>((set) => ({
+  ...initTemplatesState,
+  useDispatch: (action: templateAction) =>
+    set((state) => templateReducer(state, action)),
 }));
 
 export default {};
