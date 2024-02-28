@@ -52,12 +52,20 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'object-curly-newline': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+      },
+    ],
   },
   settings: {
     'import/resolver': {
       alias: {
         map: [['@', './src']],
-        extensions: ['.js', '.jsx', '.tsx'],
+        extensions: ['.js', '.jsx', '.tsx', '.ts'],
       },
     },
   },
