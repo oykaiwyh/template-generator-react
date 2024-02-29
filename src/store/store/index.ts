@@ -1,16 +1,25 @@
 import { create } from 'zustand';
-import { initTemplatesState, initUserState } from '../state';
-import { templateReducer, userReducer } from '../reducer';
+import { initEditorState, initTemplatesState, initUserState } from '../state';
+import {
+  TEditorReducersProps,
+  editorReducer,
+  templateReducer,
+  userReducer,
+} from '../reducer';
 import type { templateAction, userAction } from '../action';
 
 interface IUserPatch {
-  useDispatch: (_action: userAction) => void;
+  useDispatch: (action: userAction) => void;
 }
 
 interface ITemplatePatch {
-  useDispatch: (_action: templateAction) => void;
+  useDispatch: (action: templateAction) => void;
+}
+interface IEditorPatch {
+  useDispatch: <T>({ type, payload }: TEditorReducersProps<T>) => void;
 }
 
+// 用户数据
 export const useUserStore = create<typeof initUserState & IUserPatch>(
   (set) => ({
     ...initUserState,
@@ -19,6 +28,7 @@ export const useUserStore = create<typeof initUserState & IUserPatch>(
   }),
 );
 
+// 首页数据
 export const useTemplateStore = create<
   typeof initTemplatesState & ITemplatePatch
 >((set) => ({
@@ -26,5 +36,13 @@ export const useTemplateStore = create<
   useDispatch: (action: templateAction) =>
     set((state) => templateReducer(state, action)),
 }));
+
+// Editor 页面数据
+export const useEditorStore = create<typeof initEditorState & IEditorPatch>(
+  (set) => ({
+    ...initEditorState,
+    useDispatch: (data) => set((state) => editorReducer(state, data)),
+  }),
+);
 
 export default {};

@@ -14,3 +14,11 @@ export type templateActions = {
 export type templateAction = {
   type: keyof templateActions;
 };
+
+export type editorActions = {
+  change: () => void;
+};
+
+export type editorAction = {
+  type: keyof editorActions;
+};

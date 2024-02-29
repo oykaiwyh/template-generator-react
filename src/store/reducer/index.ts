@@ -1,5 +1,5 @@
-import type { templateAction, userAction } from '../action';
-import { IUserProps, initTemplatesState } from '../state';
+import type { editorActions, templateAction, userAction } from '../action';
+import { IUserProps, initEditorState, initTemplatesState } from '../state';
 
 export const userReducer = (
   state: IUserProps,
@@ -21,6 +21,23 @@ export const templateReducer = (
 ): typeof initTemplatesState => {
   switch (action.type) {
     case 'setID':
+      return state;
+    default:
+      return state;
+  }
+};
+
+export type TEditorReducersProps<T> = {
+  type: keyof editorActions;
+  payload?: T;
+};
+
+export const editorReducer = <T>(
+  state: typeof initEditorState,
+  { type }: TEditorReducersProps<T>,
+): typeof initEditorState => {
+  switch (type) {
+    case 'change':
       return state;
     default:
       return state;

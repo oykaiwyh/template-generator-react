@@ -1,4 +1,6 @@
 import testImg from '@/assets/images/Home/test.png';
+import { TTextProps } from '@/utils/interface';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface IUserProps {
   isLogin: boolean;
@@ -18,6 +20,16 @@ export interface IGlobalDataProps {
   templates: ITemplateProps[];
 }
 
+export interface IComponentProps {
+  id: string;
+  name: string;
+  // props中包含了所以的css属性和文本节点的类型tag和内容text
+  props: TTextProps;
+}
+export interface IEditorProps {
+  currentComponent: string | null;
+  components: IComponentProps[];
+}
 const initTemplatesState = {
   template: [
     {
@@ -55,4 +67,33 @@ const initUserState: IUserProps = {
   isLogin: false,
 };
 
-export { initTemplatesState, initUserState };
+const initEditorState: IEditorProps = {
+  currentComponent: null,
+  components: [
+    {
+      name: 's-text',
+      id: uuidv4(),
+      props: {
+        tag: 'button',
+        color: '#000000',
+        text: 'hello3',
+        fontSize: '30px',
+        fontFamily: '"SimSun","STSong"',
+      },
+    },
+    {
+      name: 's-text',
+      id: uuidv4(),
+      props: {
+        color: '#000000',
+        text: 'hello4',
+        fontSize: '30px',
+        fontFamily: '',
+        actionType: 'url',
+        url: 'www.baidu.com',
+      },
+    },
+  ],
+};
+
+export { initTemplatesState, initUserState, initEditorState };

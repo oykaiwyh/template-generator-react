@@ -8,8 +8,33 @@
 }
 
 .content-center-container {
-  background: #000;
   height: 100%;
+
+  .center-control-container {
+    position: relative;
+    padding: 20px;
+
+    span[datatype='canvas-area'] {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .control-icon {
+      position: absolute;
+      right: 0;
+      display: flex;
+      justify-content: space-around;
+      width: 150px;
+    }
+  }
+
+  .center-canvas-container {
+    width: 375px;
+    height: 560px;
+    background-color: #fff;
+    margin: 24px auto 0;
+  }
 }
 
 .content-right-container {

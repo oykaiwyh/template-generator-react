@@ -1,5 +1,5 @@
-import { useTemplateStore, useUserStore } from './store';
+import { useEditorStore, useTemplateStore, useUserStore } from './store';
 
-export { useUserStore, useTemplateStore };
+export { useUserStore, useTemplateStore, useEditorStore };
 
-export default { useUserStore, useTemplateStore };
+export default { useUserStore, useTemplateStore, useEditorStore };
