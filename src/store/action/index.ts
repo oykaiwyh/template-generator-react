@@ -17,6 +17,7 @@ export type templateAction = {
 
 export type editorActions = {
   change: () => void;
+  add: () => void;
 };
 
 export type editorAction = {

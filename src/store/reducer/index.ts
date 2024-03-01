@@ -1,5 +1,10 @@
 import type { editorActions, templateAction, userAction } from '../action';
-import { IUserProps, initEditorState, initTemplatesState } from '../state';
+import {
+  IComponentProps,
+  IUserProps,
+  initEditorState,
+  initTemplatesState,
+} from '../state';
 
 export const userReducer = (
   state: IUserProps,
@@ -32,13 +37,20 @@ export type TEditorReducersProps<T> = {
   payload?: T;
 };
 
-export const editorReducer = <T>(
+export const editorReducer = <T extends IComponentProps>(
   state: typeof initEditorState,
-  { type }: TEditorReducersProps<T>,
+  { type, payload }: TEditorReducersProps<T>,
 ): typeof initEditorState => {
   switch (type) {
     case 'change':
       return state;
+    case 'add':
+      return payload
+        ? {
+            ...state,
+            components: [...state.components, payload],
+          }
+        : state;
     default:
       return state;
   }

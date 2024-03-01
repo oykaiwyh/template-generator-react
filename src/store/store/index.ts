@@ -1,5 +1,10 @@
 import { create } from 'zustand';
-import { initEditorState, initTemplatesState, initUserState } from '../state';
+import {
+  IComponentProps,
+  initEditorState,
+  initTemplatesState,
+  initUserState,
+} from '../state';
 import {
   TEditorReducersProps,
   editorReducer,
@@ -16,7 +21,10 @@ interface ITemplatePatch {
   useDispatch: (action: templateAction) => void;
 }
 interface IEditorPatch {
-  useDispatch: <T>({ type, payload }: TEditorReducersProps<T>) => void;
+  useDispatch: <T extends IComponentProps>({
+    type,
+    payload,
+  }: TEditorReducersProps<T>) => void;
 }
 
 // 用户数据

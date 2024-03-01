@@ -20,7 +20,6 @@ const ContentCanvas = () => {
       {components.map((item) =>
         computedComp<typeof item.props>(item.name, { ...item.props }),
       )}
-      <p>122222</p>
     </div>
   );
 };

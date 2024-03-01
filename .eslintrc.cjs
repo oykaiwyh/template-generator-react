@@ -56,6 +56,7 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'no-unused-vars': [2, { args: 'none' }],
     'function-paren-newline': [0],
+    indent: [0],
   },
   settings: {
     'import/resolver': {
