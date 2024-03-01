@@ -1,14 +1,29 @@
 import { useEditorStore } from '@/store';
 import SText from '@/components/SText';
-import { CSSProperties } from 'react';
+import { CSSProperties, Fragment } from 'react';
 import styles from './index.module.scss';
 
-const computedComp = <T extends CSSProperties>(name: string, props: T) => {
+const RenderCustomComp = <T extends CSSProperties>(
+  { id, name }: { id: string; name: string },
+  props: T,
+) => {
+  const dispatch = useEditorStore((state) => state.useDispatch);
+
   switch (name) {
     case 's-text':
-      return <SText {...props}></SText>;
+      return (
+        <SText
+          {...props}
+          onClick={() =>
+            dispatch({
+              type: 'choose',
+              payload: id,
+            })
+          }
+        ></SText>
+      );
     default:
-      return <div></div>;
+      return <div>111</div>;
   }
 };
 
@@ -17,9 +32,14 @@ const ContentCanvas = () => {
 
   return (
     <div className={styles['center-canvas-container']}>
-      {components.map((item) =>
-        computedComp<typeof item.props>(item.name, { ...item.props }),
-      )}
+      {components.map((item) => (
+        <Fragment key={item.id}>
+          {RenderCustomComp<typeof item.props>(
+            { id: item.id, name: item.name },
+            { ...item.props },
+          )}
+        </Fragment>
+      ))}
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { canvasDefaultTextLists } from '@/utils/const';
 import SText from '@/components/SText';
 import { useEditorStore } from '@/store';
 import { v4 as uuidv4 } from 'uuid';
+import { IComponentProps } from '@/store/state';
 import styles from './index.module.scss';
 
 const TextItems = () => {
@@ -19,7 +20,7 @@ const TextItems = () => {
         <div
           key={`${compAttribute.id}`}
           onClick={() =>
-            dispatch({
+            dispatch<IComponentProps>({
               type: 'add',
               payload: {
                 ...compAttribute,

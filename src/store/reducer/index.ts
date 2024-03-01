@@ -37,7 +37,7 @@ export type TEditorReducersProps<T> = {
   payload?: T;
 };
 
-export const editorReducer = <T extends IComponentProps>(
+export const editorReducer = <T extends IComponentProps | string>(
   state: typeof initEditorState,
   { type, payload }: TEditorReducersProps<T>,
 ): typeof initEditorState => {
@@ -48,7 +48,14 @@ export const editorReducer = <T extends IComponentProps>(
       return payload
         ? {
             ...state,
-            components: [...state.components, payload],
+            components: [...state.components, payload as IComponentProps],
+          }
+        : state;
+    case 'choose':
+      return payload
+        ? {
+            ...state,
+            currentComponentID: payload as string,
           }
         : state;
     default:

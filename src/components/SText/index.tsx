@@ -1,10 +1,9 @@
 import { TTextProps } from '@/utils/interface';
+import { MouseEvent } from 'react';
 import styles from './index.module.scss';
 
 export type IETextProps = TTextProps & {
-  onClick?: (e?: any) => {
-    //
-  };
+  onClick?: (e?: MouseEvent) => void;
 };
 
 const EText = ({

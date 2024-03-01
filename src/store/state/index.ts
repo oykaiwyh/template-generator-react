@@ -27,7 +27,7 @@ export interface IComponentProps {
   props: TTextProps;
 }
 export interface IEditorProps {
-  currentComponent: string | null;
+  currentComponentID: string | null;
   components: IComponentProps[];
 }
 const initTemplatesState = {
@@ -68,7 +68,7 @@ const initUserState: IUserProps = {
 };
 
 const initEditorState: IEditorProps = {
-  currentComponent: null,
+  currentComponentID: null,
   components: [
     {
       name: 's-text',

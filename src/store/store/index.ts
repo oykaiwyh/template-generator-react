@@ -21,7 +21,7 @@ interface ITemplatePatch {
   useDispatch: (action: templateAction) => void;
 }
 interface IEditorPatch {
-  useDispatch: <T extends IComponentProps>({
+  useDispatch: <T extends IComponentProps | string>({
     type,
     payload,
   }: TEditorReducersProps<T>) => void;
