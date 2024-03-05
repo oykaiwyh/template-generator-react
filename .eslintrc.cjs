@@ -3,10 +3,10 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:react-hooks/recommended',
     'plugin:import/typescript',
-    'airbnb-base',
+    'airbnb-base', // airbnb-base不含ts规则，需要把ts的放在最下面
+    'plugin:@typescript-eslint/recommended-type-checked',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -54,9 +54,15 @@ module.exports = {
     ],
     'object-curly-newline': 'off',
     'implicit-arrow-linebreak': 'off',
-    'no-unused-vars': [2, { args: 'none' }],
+    // 'no-unused-vars': [2, { args: 'none' }],
     'function-paren-newline': [0],
     indent: [0],
+    'operator-linebreak': 'off',
+    // immer导致的规则错误
+    'no-param-reassign': [
+      'error',
+      { props: true, ignorePropertyModificationsFor: ['draft'] },
+    ],
   },
   settings: {
     'import/resolver': {

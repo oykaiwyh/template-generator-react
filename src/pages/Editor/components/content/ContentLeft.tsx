@@ -1,5 +1,4 @@
-import { Tabs } from 'antd';
-import TabPane from 'antd/es/tabs/TabPane';
+import { Tabs, TabsProps } from 'antd';
 import {
   BuildOutlined,
   FieldStringOutlined,
@@ -38,44 +37,45 @@ const TextItems = () => {
   );
 };
 
-const ContentLeft = () => (
-  <div className={styles['content-left-container']}>
-    <Tabs centered>
-      <TabPane
-        tab={
-          <span>
-            <FieldStringOutlined />
-            文本
-          </span>
-        }
-        key="text"
-      >
-        <TextItems />
-      </TabPane>
-      <TabPane
-        tab={
-          <span>
-            <FileImageOutlined />
-            图片
-          </span>
-        }
-        key="img"
-      >
-        图片
-      </TabPane>
-      <TabPane
-        tab={
-          <span>
-            <BuildOutlined />
-            形状
-          </span>
-        }
-        key="shap"
-      >
-        形状
-      </TabPane>
-    </Tabs>
-  </div>
-);
+const ContentLeft = () => {
+  const items: TabsProps['items'] = [
+    {
+      key: 'text',
+      label: (
+        <span>
+          <FieldStringOutlined />
+          文本
+        </span>
+      ),
+      children: <TextItems />,
+    },
+    {
+      key: 'img',
+      label: (
+        <span>
+          <FileImageOutlined />
+          图片
+        </span>
+      ),
+      children: '图片',
+    },
+    {
+      key: 'shap',
+      label: (
+        <span>
+          <BuildOutlined />
+          形状
+        </span>
+      ),
+      children: '形状',
+    },
+  ];
+
+  return (
+    <div className={styles['content-left-container']}>
+      <Tabs centered items={items} />
+    </div>
+  );
+};
 
 export default ContentLeft;

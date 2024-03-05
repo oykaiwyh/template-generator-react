@@ -1,6 +1,11 @@
+import { IETextDefaultProps } from '@/utils/interface';
+import { CSSProperties } from 'react';
+import { produce } from 'immer';
 import type { editorActions, templateAction, userAction } from '../action';
+
 import {
   IComponentProps,
+  IEditorProps,
   IUserProps,
   initEditorState,
   initTemplatesState,
@@ -37,12 +42,29 @@ export type TEditorReducersProps<T> = {
   payload?: T;
 };
 
-export const editorReducer = <T extends IComponentProps | string>(
-  state: typeof initEditorState,
+export type TActionType = {
+  [P in keyof IETextDefaultProps]?: string;
+};
+
+export const editorReducer = <
+  T extends IComponentProps | string | CSSProperties,
+>(
+  state: IEditorProps,
   { type, payload }: TEditorReducersProps<T>,
 ): typeof initEditorState => {
   switch (type) {
     case 'change':
+      if (payload) {
+        const currentIndex = state.components.findIndex(
+          (item) => item.id === state.currentComponentID,
+        );
+        return produce(state, (draft) => {
+          draft.components[currentIndex].props = {
+            ...draft.components[currentIndex].props,
+            ...(payload as CSSProperties),
+          };
+        });
+      }
       return state;
     case 'add':
       return payload

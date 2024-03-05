@@ -1,6 +1,9 @@
 import { create } from 'zustand';
+import { CSSProperties } from 'react';
+import { immer } from 'zustand/middleware/immer';
 import {
   IComponentProps,
+  IEditorProps,
   initEditorState,
   initTemplatesState,
   initUserState,
@@ -21,7 +24,7 @@ interface ITemplatePatch {
   useDispatch: (action: templateAction) => void;
 }
 interface IEditorPatch {
-  useDispatch: <T extends IComponentProps | string>({
+  useDispatch: <T extends IComponentProps | string | CSSProperties>({
     type,
     payload,
   }: TEditorReducersProps<T>) => void;
@@ -46,11 +49,12 @@ export const useTemplateStore = create<
 }));
 
 // Editor 页面数据
-export const useEditorStore = create<typeof initEditorState & IEditorPatch>(
-  (set) => ({
+export const useEditorStore = create<IEditorProps & IEditorPatch>()(
+  immer((set) => ({
     ...initEditorState,
-    useDispatch: (data) => set((state) => editorReducer(state, data)),
-  }),
+    useDispatch: (data) =>
+      set((state: IEditorProps) => editorReducer(state, data)),
+  })),
 );
 
 export default {};
